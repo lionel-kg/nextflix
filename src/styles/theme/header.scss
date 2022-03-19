@@ -1,0 +1,31 @@
+.header {
+    &_main {
+        background-color: transparent;
+        position: relative;
+        max-width: 1920px;
+        margin: 0 auto;
+        padding-top: 10px;
+        width: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 5rem;
+        z-index: 10;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+.nav {
+    &_list {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    &_item {
+        list-style: none;
+        margin: 0 20px;
+    }
+}

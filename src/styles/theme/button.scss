@@ -1,0 +1,13 @@
+.btn{
+    padding: 7px 17px;
+    font-weight: 400;
+    font-size: 1rem;
+    cursor: pointer;
+    color: white;
+    border: none;
+    &_color{
+        &_red{
+            background-color: red;
+        }
+    }
+}

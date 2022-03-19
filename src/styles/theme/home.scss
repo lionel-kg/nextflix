@@ -1,0 +1,66 @@
+.homePage{
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    background-image: url("../../public/assets/bg.jpg");
+    background-size: cover ;
+    &_filter{
+        z-index: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        background-color: rgb(0, 0 , 0, 0.6);
+    }
+}
+
+.container{
+    &_text{
+        position: relative;
+        width: 100%;
+        padding: 75px 0;
+        top: 20%;
+        max-width: 950px;
+        color: white;
+        margin: 0 auto;
+        text-align: center;
+        z-index: 1;
+    }
+    &_sub{
+        display: flex;
+        justify-content: column;
+        .input_sub{
+            min-width: 700px;
+            min-height: 70px;
+            
+        }
+        .btn_sub{
+            min-width: 250px;
+            min-height: 70px;
+            padding: 0 30px;
+            font-size: 1.875rem;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    }
+    
+}
+.title{
+    font-size: 4rem;
+}
+.paragraph_sub{
+    font-size: 1.625rem;
+}
+
+.form_title{
+    max-width: none;
+    padding-bottom: 20px;
+    font-size: 1.2rem;
+}
