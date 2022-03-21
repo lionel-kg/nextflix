@@ -1,13 +1,35 @@
-.btn{
+.btn {
     padding: 7px 17px;
     font-weight: 400;
     font-size: 1rem;
     cursor: pointer;
     color: white;
     border: none;
-    &_color{
-        &_red{
+    &_color {
+        &_red {
             background-color: red;
         }
     }
+}
+.carrousel_btn {
+    position: absolute;
+    color: #fff;
+    text-decoration: none;
+    background: transparent;
+    width: 80px;
+    padding: 20px;
+    text-align: center;
+    z-index: 1;
+}
+.previous {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(-90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+}
+.next {
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
 }

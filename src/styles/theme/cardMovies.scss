@@ -1,0 +1,36 @@
+.list{
+    &_movies{
+        flex: 0 0 192px;
+        display: flex;
+        padding: 0 55px;
+    }
+    &_movies:hover .card_movies{
+        transform: translateX(-25%);
+    }
+}
+
+.card_movies{
+    flex: 0 0 14.7%;
+    text-align: center;
+    transition: transform 300ms ease 100ms;
+    color: white;
+}
+.card_movies:hover{
+    
+    transform: scale(1.5) !important;
+ }
+ .card_movies:hover ~ .card_movies {
+    transform: translateX(25%);
+ }
+ .bg{
+    z-index: -1;
+    position: absolute;
+    top: 0%;
+    bottom: 0%;
+    left: 0%;
+    right: 0%;
+    background-color: black;
+ }
+ 
+    
+ 
