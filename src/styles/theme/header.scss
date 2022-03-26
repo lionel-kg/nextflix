@@ -16,6 +16,11 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+
+    }
+    &_main img{
+        min-width: none;
+        min-height: auto;
     }
 }
 .nav {

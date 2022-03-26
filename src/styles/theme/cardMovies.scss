@@ -1,14 +1,24 @@
 .list{
     &_movies{
-        flex: 0 0 192px;
+        flex: 0 0 40px;
         display: flex;
         padding: 0 55px;
-    }
-    &_movies:hover .card_movies{
-        transform: translateX(-25%);
+        margin-top: 50px;
+        color: white
     }
 }
-
+.react-multi-carousel-item{
+    height: 230px;
+}
+.react-multiple-carousel__arrow {
+    height: 100%;
+}
+.react-multiple-carousel__arrow--left {
+    left: 0%;
+}
+.react-multiple-carousel__arrow--right {
+    right: 0%;
+}
 .card_movies{
     flex: 0 0 14.7%;
     text-align: center;
@@ -24,7 +34,7 @@
  }
  .bg{
     z-index: -1;
-    position: absolute;
+    position: fixed;
     top: 0%;
     bottom: 0%;
     left: 0%;
