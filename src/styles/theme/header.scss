@@ -1,7 +1,7 @@
 .header {
     &_main {
         background-color: transparent;
-        position: relative;
+        position: fixed;
         max-width: 1920px;
         margin: 0 auto;
         padding-top: 10px;
@@ -12,11 +12,9 @@
         bottom: 0;
         height: 5rem;
         z-index: 10;
-        position: relative;
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
-
+        justify-content: space-between;    
     }
     &_main img{
         min-width: none;

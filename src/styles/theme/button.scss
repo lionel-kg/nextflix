@@ -21,6 +21,29 @@
     text-align: center;
     z-index: 1;
 }
+.banner_btn{
+    display: flex;
+    align-items: center;
+    color: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.4rem 1rem 0.4rem 0.5rem ;
+    margin-right: 0.7rem;
+    background-color: rgba(110,110,110,0.7);
+    border-radius: 3px;
+    @media screen and(min-width:768px) {
+        font-size: 1.4rem;
+        padding: 0.8rem 1.5rem
+    }
+    &_play{
+        background-color: white;
+        color: black;
+    }
+    svg{
+        margin-right: 0.4rem;
+    }
+}
+
 .previous {
     top: 0;
     bottom: 0;
