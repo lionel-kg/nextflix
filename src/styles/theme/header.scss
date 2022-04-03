@@ -14,9 +14,9 @@
         z-index: 10;
         display: flex;
         flex-direction: row;
-        justify-content: space-between;    
+        justify-content: space-between;
     }
-    &_main img{
+    &_main img {
         min-width: none;
         min-height: auto;
     }
@@ -30,5 +30,79 @@
     &_item {
         list-style: none;
         margin: 0 20px;
+    }
+}
+
+/* nav home page */
+
+.nav {
+    display: flex;
+    background-color: transparent;
+    position: fixed;
+    max-width: 1920px;
+    margin: 0 auto;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: #fff;
+    height: 5rem;
+    align-items: center;
+    font-size: 1.2rem;
+    background: linear-gradient(to bottom rgba(74, 74, 74, 0.6));
+    flex-wrap: wrap;
+    position: fixed;
+    z-index: 10;
+    justify-content: space-between;
+    padding: 0 3%;
+    &_black{
+        background-color: #000;
+    }
+    &_burger {
+        cursor: pointer;
+        color: #fff;
+        margin-right: 1rem;
+        @media screen and (min-width: 768px) {
+            display: none;
+        }
+    }
+    &_links {
+        margin-left: 20px;
+        display: flex;
+        align-items: center;
+        .nav_link {
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+        @media screen and (max-width: 767.98px) {
+            margin-left: 0;
+            visibility: hidden;
+            position: absolute;
+            top: 110%;
+            right: 0;
+            .show & {
+                display: flex;
+                flex-direction: column;
+                visibility: visible;
+                width: 100%;
+                height: 100vh;
+                top: 60px;
+                background-color: #000;
+            }
+            .nav_link {
+                font-size: 1.1rem;
+                padding: 15px 4%;
+            }
+        }
+    }
+    &_actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex: 1;
+        .nav_action {
+            margin-left: 10px;
+        }
     }
 }

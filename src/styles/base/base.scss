@@ -4,6 +4,10 @@ body {
   margin: 0;
   //font-family: $titleFont;
 }
+ul,li{
+  text-decoration: none;
+  list-style: none;
+}
 
 a {
   color: inherit;
@@ -13,7 +17,7 @@ button{
   background: none;
   border: none;
 }
-h1,p{
+h1,h2,h3,p{
   margin-bottom: 1rem;
 }
 ::before{
