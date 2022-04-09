@@ -1,13 +1,20 @@
-import { React, useEffect, useState } from 'react';
+import { React, useEffect, useRef, useState } from 'react';
 import Cardmovies from './CardMovies';
+import ArrowBackIosOutlinedIcon from '@material-ui/icons/ArrowBackIosOutlined';
+import ArrowForwardIosOutlinedIcon from '@material-ui/icons/ArrowForwardIosOutlined';
+
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import axios from 'axios';
+import { Directions } from '@material-ui/icons';
 
 
 const Row = (props) => {
+    const [isMoved, setIsMoved] = useState(false);
+    const [sliderNumber, setSliderNumber] = useState(0)
     const { title, url } = props;
     const [movies, setMovies] = useState([])
+    const ref = useRef();
     const [loading, setLoading] = useState(true)
     const responsive = {
         superLargeDesktop: {
@@ -49,32 +56,45 @@ const Row = (props) => {
         if (loading === true) {
             getMovies()
         }
-        console.log(movies)
     }, [loading]);
+    const handleclick = (Directions) => {
+        setIsMoved(true)
+        let distance = ref.current?.getBoundingClientRect().x - 50;
+        if (Directions === "left" && sliderNumber > 0) {
+            setSliderNumber(sliderNumber - 1)
+            console.log(ref.current?.style)
+            ref.current?.style.transform = `translate(${230 + distance}px)`
+        }
+        if (Directions === "right" && sliderNumber < 10) {
+            setSliderNumber(sliderNumber + 1)
+            console.log(ref.current?.style)
+            ref.current?.style.transform = `translate(${-230 + distance}px)`
+        }
+    }
 
     return (
         <div className='row'>
             <h2 className='row_title'>
                 {title}
             </h2>
-            <Carousel
-                swipeable={false}
-                draggable={false}
-                showDots={false}
-                responsive={responsive}
-                ssr={true} // means to render carousel on server-side.
-                infinite={true}
-                autoPlay={false}
-                shouldResetAutoplay={false}
-                keyBoardControl={true}
-                removeArrowOnDeviceType={["tablet", "mobile"]}
-                itemClass="list_movies carousel-item-padding-5-px">
-                {
-                    movies.map((movie) => {
-                        return <div className='list_movies'><Cardmovies src={`https://image.tmdb.org/t/p/w185/${movie.backdrop_path}`} title={movie.title} /></div>
-                    })
-                }
-            </Carousel>
+                <Carousel
+                    swipeable={false}
+                    draggable={false}
+                    showDots={false}
+                    responsive={responsive}
+                    ssr={true} // means to render carousel on server-side.
+                    infinite={true}
+                    autoPlay={false}
+                    shouldResetAutoplay={false}
+                    keyBoardControl={true}
+                    removeArrowOnDeviceType={["tablet", "mobile"]}
+                    itemClass="list_movies carousel-item-padding-5-px">
+                    {
+                        movies.map((movie) => {
+                            return <div className='list_movies'><Cardmovies movie={movie} /></div>
+                        })
+                    }
+                </Carousel>
         </div>
     );
 }

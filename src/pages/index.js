@@ -5,7 +5,6 @@ export default function Home() {
   return (
     <div className="homePage">
       <div className="homePage_filter">
-
       </div>
       <div className="container_text">
         <h1 className="title">Films, séries TV et bien plus en illimité.</h1>

@@ -16,6 +16,7 @@ const Header = (props) => {
     const { page } = props;
     const prevScrollY = useRef(100);
     const [navBlack, setNavBlack] = useState(false);
+    const [isActive, setIsActive] = useState(false)
     const [movies, setMovies] = useState([])
     const router = useRouter();
     const options = [
@@ -27,10 +28,9 @@ const Header = (props) => {
             axios.get(`https://api.themoviedb.org/3/search/movie?api_key=68f3e254905b7d9ded0d2c549eeb73c5&language=en-US&query=${param}&page=1`)
                 .then((res) => {
                     setMovies(res.data.results);
-                    console.log(movies);
+                    //console.log(movies);
                 })
         }
-
         if (param === "") {
             localStorage.removeItem("list_movies");
         } else {
@@ -41,13 +41,11 @@ const Header = (props) => {
     
 
     const handleChange = (e) => {
-        console.log(e)
         let searchParams = new URLSearchParams(window.location.search);
         let search = ""
         searchParams.set("q", e);
-        console.log(searchParams.toString)
-        let set
-        if (searchParams.toString !== "") {
+        //console.log(searchParams.toString)
+        if (e !== "") {
             search = "/search"
 
             if (window.history.replaceState) {
@@ -55,7 +53,18 @@ const Header = (props) => {
                     + "?"
                     + searchParams.toString();
 
-                console.log(window.location.pathname, window.location.host)
+                //console.log(window.location.pathname, window.location.host)
+                window.history.replaceState({
+                    path: url
+                }, "", url)
+            }
+            setTimeout(() => {
+                router.push(url);
+            }, 2000);
+        } else {
+            search = "/home"
+            if (window.history.replaceState) {
+                const url = window.location.origin + search
                 window.history.replaceState({
                     path: url
                 }, "", url)
@@ -65,6 +74,19 @@ const Header = (props) => {
 
     const transitionNav = ()=>{
         window.screenY > 100 ? setNavBlack(true) : setNavBlack(false);
+    }
+
+    const showSearch = () =>{
+        if(isActive === false){
+            setIsActive(true)
+            console.log(isActive)
+        } 
+    }
+    const hiddenSearch = () =>{
+        if(isActive === true){
+            setIsActive(false);
+            console.log(isActive)
+        }
     }
 
     useEffect(() => {
@@ -101,7 +123,7 @@ const Header = (props) => {
                     <nav className='header_nav'>
                         <ul className='nav_list'>
                             <li>
-                                <Input type={"text"} name={"search"} placeholder={"Titre, genre, personne"} onKeyUp={(e) => handleChange(e.target.value)} onChange={(e) => { searchMovie(e.target.value) }} ></Input>
+                                <Input classes={"search_bar"} type={"text"} name={"search"} placeholder={"Titre, genre, personne"} onKeyUp={(e) => handleChange(e.target.value)} onChange={(e) => { searchMovie(e.target.value) }} ></Input>
                             </li>
                             <li className='nav_item'>
                                 <Select classes="select" options={options} />
@@ -129,13 +151,14 @@ const Header = (props) => {
                             <li className="nav_link"><Link href={"/home"} className="nav_link">
                                 Accueil
                             </Link></li>
-                            <li className="nav_link"><Link href={"/home"}  >
+                            <li className="nav_link"><Link href={"/filter"}  >
                                 Film
                             </Link></li>
                         </ul>
-                        <ul className="nav_actions">
-                            <li className="nav_action"><Link href={"/home"} >
-                                <SearchIcon/>
+                        <ul className="nav_actions ">
+                            <li className="nav_action"><Input classes={`${isActive && "active"}`} onKeyUp={(e) => handleChange(e.target.value)} onChange={(e) => { searchMovie(e.target.value) }}/><Link href={"/home"}>
+                                
+                                <div ><SearchIcon onClick={showSearch}/></div>
                             </Link></li>
                             <li className="nav_action"> <Link href={"/home"} >
                                 DIRECT
@@ -146,7 +169,7 @@ const Header = (props) => {
                             <li className="nav_action"><Link href={"/home"} className="nav_action">
                                 <NotificationIcon />
                             </Link></li>
-                            <li className="nav_action"><Link href={"/home"} className="nav_action">
+                            <li className="nav_action"><Link href={"/profil"} className="nav_action">
                             <Image src={avatar}
                                 alt=""
                                 width={30}

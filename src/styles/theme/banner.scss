@@ -14,7 +14,7 @@
         padding-bottom: 7rem;
     }
     &_content{
-        width: 40vw;
+        width: 45vw;
         padding: 8vh 4% 0 4%;
         @media screen and(min-width:768px) {
             font-size: 1.4rem;
@@ -39,6 +39,28 @@
             height: 7rem;
         }
     }
-    
 
+}
+.close-video {
+    position: absolute;
+    z-index: 12;
+    bottom: 10px;
+    left: 10px;
+}
+
+.youtube-container {
+    z-index: 11;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+.youtube-container_modal {
+    z-index: 11;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
 }

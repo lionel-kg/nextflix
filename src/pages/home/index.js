@@ -11,17 +11,23 @@ import { useRouter } from 'next/router';
 
 const Mainpage = () => {
     const [movies, setMovies] = useState([])
+    const [moviesSearch, setMoviesSearch] = useState([])
     const [movieBanner, setMovieBanner] = useState([])
-    const [search, setSearch] = useState(false)
+    const [search, setSearch] = useState()
     const [trailer, setTrailer] = useState()
     const [loading, setLoading] = useState(true)
+    const [showModal, SetShowModal] = useState(false);
     const [loadingTrailer, setLoadingTrailer] = useState(true)
     const [trueLoading, setTrueLoading] = useState(true)
     //let list_movies = localStorage.getItem("list_movies");
     const apiUrl = "https://api.themoviedb.org/3/movie/"
     const api_key = "68f3e254905b7d9ded0d2c549eeb73c5"
-    const router = useRouter();  
+    const router = useRouter();
 
+    const handleClickModal = () => {
+        showModal ? SetShowModal(false) : SetShowModal(true);
+    }
+    const closeModal = () => { showModal ? SetShowModal(false) : null }
     useEffect(() => {
         const getMovies = async () => {
             let newResult = [];
@@ -59,16 +65,21 @@ const Mainpage = () => {
         }
     }, [loading, loadingTrailer]);
 
-    /* useEffect(() => {
+    /*useEffect(() => {
+        setSearch(window.location.search.substring(2))
+        console.log(search);
+        if (search !== "/home") {
+            setTimeout(() => {
+                axios.get(`https://api.themoviedb.org/3/search/movie?api_key=68f3e254905b7d9ded0d2c549eeb73c5&language=en-US&query=${search}&page=1`)
+                    .then((res) => {
+                        console.log(res.data.results)
+                        setMoviesSearch(res.data.results);
+                    })
+            }, 2000);
+        }
         
-         if (list_movies === "") {
-             setSearch(true);
-         } else {
-             setSearch(false);
-         }
-         console.log(search)
-     },[])
- */
+    }, [search])
+*/
 
     /*@todo utiliser useCallback et faire une requete http avec la saisie 
         listingSearchAutoComplete sur le git alma pour s'inspirer
@@ -78,9 +89,9 @@ const Mainpage = () => {
         <>
             {trueLoading === true ? "Loading" : (
                 <>
-                    <Banner movie={movieBanner} />
-                    {search === false ?
-                        (<div className=''>
+                    <Banner movie={movieBanner} handleClickModal={handleClickModal} showModal={showModal} closeModal={closeModal} />
+                    
+                        <div className='' onClick={closeModal}>
                             {/*<div className='most_popular'>
                                 <iframe width={"100%"} height={"100%"} src={"https://www.youtube.com/embed/" + trailer + "?autoplay=1&mute=1&loop=1&controls=0&modestbranding=1&rel=0"}></iframe>
                             </div>*/}
@@ -89,9 +100,8 @@ const Mainpage = () => {
                             <Row title={"films d'action"} url={requests.fetchActionMovies} />
                             <Row title={"Film d'horreur"} url={requests.fetchHorrorMovies} />
                             <Row title={"Film comique"} url={requests.fetchComedyMovies} />
-
-                        </div>) : (null)}
-                    <div className='bg'></div>
+                        </div>
+                    <div className='bg' onClick={closeModal}></div>
                 </>
             )}
         </>

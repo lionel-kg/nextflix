@@ -13,7 +13,6 @@ const Modal = (props) => {
                         {movie.overview}
                     </p>
                 </div>
-                
             </div>
             <Button classes={"modal_close"} onclick={modal} text={<CancelIcon fontSize='large' />}/>
         </div>

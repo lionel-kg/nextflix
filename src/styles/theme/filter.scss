@@ -1,0 +1,18 @@
+.list_movies_filter{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+}
+.container_banner_filter{
+        position: relative;
+        height: 15vh;
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        color: white;
+        justify-content: space-around;
+        height: 50vh;
+        font-size: 0.9rem;
+        padding-bottom: 3rem;
+        background-color: black; 
+}

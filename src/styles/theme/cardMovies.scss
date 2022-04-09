@@ -2,36 +2,44 @@
     &_movies{
         flex: 0 0 40px;
         display: flex;
-        padding: 0 55px;
-        margin-top: 50px;
+        margin-top: 10px;
         color: white
     }
 }
+.slider {
+    position: relative;
+    margin: 0;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+}
 .react-multi-carousel-item{
+    z-index: -3;
+    width: 0;
     height: 230px;
 }
 .react-multiple-carousel__arrow {
     height: 100%;
 }
 .react-multiple-carousel__arrow--left {
-    left: 0%;
+    left: 1px;
 }
 .react-multiple-carousel__arrow--right {
-    right: 0%;
+    right: 1px;
 }
 .card_movies{
     flex: 0 0 14.7%;
     text-align: center;
     transition: transform 300ms ease 100ms;
     color: white;
+    width: 180px;
+    height: 104px;
 }
 .card_movies:hover{
-    
-    transform: scale(1.5) !important;
+    transform: scale(1.2) !important;
+    width: 200px;
+    height: 300px;
  }
- .card_movies:hover ~ .card_movies {
-    transform: translateX(25%);
- }
+
  .bg{
     z-index: -1;
     position: fixed;
@@ -43,4 +51,16 @@
  }
  
     
- 
+.list_button{
+    display: flex;
+    text-align: right;
+}
+.container_card{
+    margin-right: 10px;
+}
+
+.listItem{
+    width: 225px;
+    height: 120px;
+    margin-right: 5px;
+}
