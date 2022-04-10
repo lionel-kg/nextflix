@@ -91,7 +91,7 @@ const Row = (props) => {
                     itemClass="list_movies carousel-item-padding-5-px">
                     {
                         movies.map((movie) => {
-                            return <div className='list_movies'><Cardmovies movie={movie} /></div>
+                            return <Cardmovies movie={movie} />
                         })
                     }
                 </Carousel>

@@ -35,12 +35,12 @@ const Index = () => {
     }
 
     return (
-        <div>
-            <h1>Login Form</h1>
+        <div className='container_form'>       
             <form className='login-form' onSubmit={e => handleSubmit(e)}>
-                <input type='text' placeholder='Email' value={formData.email} name='email' onChange={e => handleChange(e)} ></input>
-                <input type='text' placeholder='Password' value={formData.password} name='password' onChange={e => handleChange(e)} ></input>
-                <button className='btn_color_red' type='submit'>Login</button>
+                <h1 className='form_title'>Connexion</h1>
+                <input className={"input_form"} type='email' placeholder='Email' value={formData.email} name='email' onChange={e => handleChange(e)} ></input>
+                <input className={"input_form"} type='password' placeholder='Password' value={formData.password} name='password' onChange={e => handleChange(e)} ></input>
+                <button className='btn_color_red btn_form' type='submit'>Login</button>
             </form>
         </div>
     )

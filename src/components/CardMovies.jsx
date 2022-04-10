@@ -3,6 +3,8 @@ import PlayIcon from "@material-ui/icons/PlayArrowRounded";
 import AddIcon from "@material-ui/icons/AddCircleOutlineRounded";
 import SuppIcon from "@material-ui/icons/CloseRounded";
 import ThumbUpIcon from '@material-ui/icons/ThumbUpRounded';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -10,6 +12,7 @@ const Cardmovies = (props) => {
     const { movie } = props;
     const [isHover, setIsHover] = useState(false)
     const [isValid, setIsValid] = useState(false)
+    const notifyAdd = () => toast.success(`${movie.original_title} a bien été ajouté dans ta watchlist !`,{position: toast.POSITION.TOP_CENTER});
     const [wish, setWish] = useState()
     const mouseOnCard = () => {
         if (isHover === false) {
@@ -67,11 +70,14 @@ const Cardmovies = (props) => {
             <div className='card_movies' id={movie.title} onMouseOver={mouseOnCard} onMouseOut={mouseOutsideCard}>
                 <img src={`https://image.tmdb.org/t/p/w185/${movie.backdrop_path}`} />
                 <div className='itemInfo'>
-                    <div className='icons'><PlayIcon /> <AddIcon onClick={() => {addWishlist(movie)}} /> <ThumbUpIcon /><SuppIcon /></div>
+                    <div className='icons'>
+                        <PlayIcon /> 
+                        <AddIcon onClick={() => {
+                        addWishlist(movie)  
+                        notifyAdd()}} />
+                        <ThumbUpIcon /><SuppIcon /></div>
                     <div className='title_movies'>{movie.title}</div>
                 </div>
-            </div>
-            <div className='mouseout'>
             </div>
         </>
 

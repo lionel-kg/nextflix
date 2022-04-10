@@ -3,16 +3,26 @@
         flex-direction: row;
         flex-wrap: wrap;
 }
+.list_filter{
+        max-width: 185px;
+        margin-right: 25px;
+        margin-bottom: 15px;
+}
 .container_banner_filter{
-        position: relative;
         height: 15vh;
         display: flex;
         position: relative;
-        flex-direction: column;
+        flex-direction: row;
         color: white;
-        justify-content: space-around;
         height: 50vh;
-        font-size: 0.9rem;
         padding-bottom: 3rem;
         background-color: black; 
+        .search{
+                margin: auto auto auto 0;
+                width: 450px;
+                height: 45px;
+        }
+}
+.info{
+        flex-wrap: wrap;
 }

@@ -83,7 +83,13 @@ const Banner = (props) => {
                             </button>
                         </> : <div className="banner_buttons">
                             <Button classes="banner_btn banner_btn_play" text="Lecture" icon={<PlayArrowIcon />} onclick={() => setPlaying(true)} />
-                            <Button classes="banner_btn" text="Plus d'infos" icon={<InfoIcon />} onclick={handleClickModal} />
+                            <Button 
+                                classes="banner_btn" 
+                                text="Plus d'infos"
+                                icon={<InfoIcon />} 
+                                onclick={() => {
+                                handleClickModal()
+                            }} />
                             {router.asPath === "/filter" ?
 
                                 <Select options={options} classes={"select"}/> : null

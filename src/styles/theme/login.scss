@@ -1,0 +1,27 @@
+.container_form{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-image: url("../../public/assets/bg.jpg");
+    .form_title{
+        margin: 15px auto;
+        height: 10%;
+    }
+    .login-form{
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        height: max-content;
+        background-color: rgb(0, 0, 0,0.4);
+        .input_form{
+            width: 70vh;
+            height: 50px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+        .btn_form{
+            height: 50px;
+            border-radius: 5px;
+        }
+    }
+}

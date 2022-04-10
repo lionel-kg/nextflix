@@ -7,6 +7,7 @@ import Carousel from 'react-multi-carousel';
 import Banner from '../../components/Banner';
 import Row from '../../components/Row';
 import { useRouter } from 'next/router';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 const Mainpage = () => {
@@ -101,6 +102,8 @@ const Mainpage = () => {
                             <Row title={"Film d'horreur"} url={requests.fetchHorrorMovies} />
                             <Row title={"Film comique"} url={requests.fetchComedyMovies} />
                         </div>
+                        <ToastContainer autoClose={8000} />
+
                     <div className='bg' onClick={closeModal}></div>
                 </>
             )}

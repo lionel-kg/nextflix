@@ -7,8 +7,6 @@ import Input from "../../components/Input";
 import Cardmovies from '../../components/CardMovies';
 import Row from '../../components/Row';
 import requests from '../../request/Tools';
-
-
 const Index = () => {
     const [movies, setMovies] = useState([]);
     const [movieBanner, setMovieBanner] = useState([])
@@ -30,11 +28,11 @@ const Index = () => {
                 .then((res) => {
                     setMovies(res.data.results);
                 })
-        }else {
+        } else {
 
             getfiltermovies();
         }
-        
+
     }
     const getfiltermovies = async (genre = "rated") => {
         let request = requests.fetchTopRated;
@@ -59,23 +57,27 @@ const Index = () => {
 
 
     return (
-        <>
+        <div className='home'>
             {loading === false ? (
-                <>  <div className='container_banner_filter'><Select options={options} classes={"select"} onchange={(e) => handleChange(e)} /><Input onChange={(e) => onChange(e.target.value)} /></div>
-
+                <>
+                    <div className='container_banner_filter'><Select options={options} classes={"select"} onchange={(e) => handleChange(e)} /><Input classes={"search"} onChange={(e) => onChange(e.target.value)} /></div>
                     <div className='list_movies_filter'>
                         {
                             movies.map((movie) => {
-                                return <><Cardmovies movie={movie} /></>
+                                return <>
+                                    <div className="list_filter">
+                                            <img src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} />
+                                            <div className='info'>
+                                                {movie.title}
+                                            </div>
+                                    </div>
+
+                                </>
                             })
                         }
-                        <div className='bg'></div>
-                    </div></>) : (null)}
-
-
-
-
-        </>
+                    </div>
+                </>) : (null)}
+        </div>
     );
 }
 
