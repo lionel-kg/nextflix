@@ -33,8 +33,9 @@ const Index = () => {
                     className={"img_left"}
                 />
                 <div className='info'>
-                    <h1 className='title'>{user.username}</h1>
-                    <p><Button text={"logout"} classes={"btn_color_red"} onclick={() => logout()} /></p>
+                    <h1 className='title'> pseudo : <span >{user.username}</span></h1>
+                    <h1 className='title'> email : <span >{user.email}</span></h1>
+                    <p><Button text={"logout"} classes={"btn_color_red btn_logout"} onclick={() => logout()} /></p>
                 </div>
 
             </div>

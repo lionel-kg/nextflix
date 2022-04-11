@@ -126,14 +126,14 @@ const Header = (props) => {
                                 <Input classes={"search_bar"} type={"text"} name={"search"} placeholder={"Titre, genre, personne"} onKeyUp={(e) => handleChange(e.target.value)} onChange={(e) => { searchMovie(e.target.value) }} ></Input>
                             </li>
                             <li className='nav_item'>
-                                <Select classes="select" options={options} />
+                                <Select classes="select select_header" options={options} />
                             </li>
                             <li className='nav_item'>
                                 {router.asPath === "/login" ?
                                     (<Link href={"/register"}>
-                                        <Button text={"S'inscrire"} onclick={()=>{router.push("/register")}} classes="btn btn_color_red" />
+                                        <Button text={"S'inscrire"} onclick={() => { router.push("/register") }} classes="btn btn_color_red" />
                                     </Link>) : (<Link href={"/login"}>
-                                        <Button text={"Connexion"} onclick={()=>{router.push("/login")}} classes="btn btn_color_red" />
+                                        <Button text={"Connexion"} onclick={() => { router.push("/login") }} classes="btn btn_color_red" />
                                     </Link>)}
                             </li>
                         </ul>
@@ -157,15 +157,16 @@ const Header = (props) => {
                             <li className="nav_link"><Link href={"/filter"}  >
                                 Film
                             </Link></li>
+                            <li className="nav_action"> <Link href={"/wishlist"} >
+                                Ma liste
+                            </Link></li>
                         </ul>
                         <ul className="nav_actions ">
                             <li className="nav_action">{/*<Input classes={`${isActive && "active"}`} onKeyUp={(e) => handleChange(e.target.value)} onChange={(e) => { searchMovie(e.target.value) }} />*/}<Link href={"/filter"}>
 
                                 <div ><SearchIcon onClick={showSearch} /></div>
                             </Link></li>
-                            <li className="nav_action"> <Link href={"/home"} >
-                                DIRECT
-                            </Link></li>
+
                             <li className="nav_action"> <Link href={"/home"} className="nav_action">
                                 Jeunesse
                             </Link></li>
@@ -179,7 +180,7 @@ const Header = (props) => {
                                     height={30} />
                             </Link></li>
                             <li className="nav_action"><Link href={"/login"} className="nav_action">
-                            <LogoutIcon onClick={() => {
+                                <LogoutIcon onClick={() => {
                                     localStorage.removeItem("Token")
                                     localStorage.removeItem("user")
                                 }} />
