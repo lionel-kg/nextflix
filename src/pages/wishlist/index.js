@@ -27,7 +27,7 @@ const Index = () => {
         </div>
           ) : (
             <center>
-              <p className="text__center">Votre watchlist est vide.</p>
+              <p>Votre liste est vide.</p>
             </center>
           )}
         </div>
