@@ -51,7 +51,7 @@ const Banner = (props) => {
     return (
         <header className="banner" style={bannerStyle} onClick={closeModal}>
             <div className="banner_content">
-                <h1 className="banner_title">{movie.title || movie.original_title}</h1>
+                <h1 className="banner_title">{movie?.title || movie?.original_title}</h1>
                 <p className="banner_description">
                     {truncateDescription(movie.overview, 200)}
                 </p>
@@ -59,7 +59,7 @@ const Banner = (props) => {
                     {playing ?
                         <>
                             <YouTube
-                                videoId={trailer.key}
+                                videoId={trailer?.key}
                                 className={"youtube amru"}
                                 containerClassName={"youtube-container amru"}
                                 opts={

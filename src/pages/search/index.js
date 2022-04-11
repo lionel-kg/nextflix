@@ -4,7 +4,9 @@ import Banner from '../../components/Banner';
 import Cardmovies from '../../components/CardMovies';
 import Row from '../../components/Row';
 import requests from '../../request/Tools';
+import Withauth from '../../HDC/withAuth';
 
+/*
 const Index = () => {
     const [movies, setMovies] = useState([]);
     const [movieBanner, setMovieBanner] = useState([])
@@ -53,6 +55,6 @@ const Index = () => {
 
         </>
     );
-}
+}*/
 
-export default Index;
+export default Withauth(Index);

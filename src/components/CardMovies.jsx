@@ -22,7 +22,6 @@ const Cardmovies = (props) => {
         }
     }
 
-
     const mouseOutsideCard = () => {
         if (isHover === true) {
             setTimeout(() => {
@@ -31,8 +30,6 @@ const Cardmovies = (props) => {
         }
     }
     
-
-
     const addWishlist = (el) =>{
         //setIsValid(true)
         let newMovie = {

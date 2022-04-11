@@ -3,10 +3,11 @@ import { React, useEffect, useState } from 'react';
 import Banner from '../../components/Banner';
 import Select from "../../components/Select";
 import Input from "../../components/Input";
-
+import Withauth from '../../HDC/withAuth';
 import Cardmovies from '../../components/CardMovies';
 import Row from '../../components/Row';
 import requests from '../../request/Tools';
+
 const Index = () => {
     const [movies, setMovies] = useState([]);
     const [movieBanner, setMovieBanner] = useState([])
@@ -81,4 +82,4 @@ const Index = () => {
     );
 }
 
-export default Index;
+export default Withauth(Index);

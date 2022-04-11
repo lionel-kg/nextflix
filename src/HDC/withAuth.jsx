@@ -9,7 +9,7 @@ const Withauth = (WrapperComponent) => {
 
         useEffect(() => {
             const token = localStorage.getItem("Token");
-            if (!token || token === undefined) {
+            if (!token) {
                 Router.push("/login")
             } else {
                 setAuthVerified(true)

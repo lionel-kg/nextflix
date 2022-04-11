@@ -29,16 +29,28 @@
 .card_movies{
     flex: 0 0 14.7%;
     text-align: center;
-    transition: transform 300ms ease 100ms;
+    transition: transform 1s ease ;
     color: white;
     width: 180px;
     height: 104px;
+    .itemInfo{
+        display: none;
+    }
+    
 }
 .card_movies:hover{
     transform: scale(1.2) !important;
     width: 200px;
     height: 300px;
+    &.itemInfo{
+        display: block;
+    }
  }
+ .card_movies:hover .itemInfo{
+        display: block;
+    }
+ 
+
 
  .bg{
     z-index: -1;

@@ -8,6 +8,8 @@ import Banner from '../../components/Banner';
 import Row from '../../components/Row';
 import { useRouter } from 'next/router';
 import { ToastContainer, toast } from 'react-toastify';
+import Withauth from '../../HDC/withAuth';
+
 
 
 const Mainpage = () => {
@@ -111,4 +113,4 @@ const Mainpage = () => {
     );
 }
 
-export default Mainpage;
+export default Withauth(Mainpage);

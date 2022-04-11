@@ -2,27 +2,9 @@
   "users": [
     {
       "email": "lionel77350@gmail.com",
-      "password": "$2a$10$Z1wIgI/Bu9G6.8CSaMTLV.bUYxGfPq3GkSmOWVvp79XODZUGT8Tim",
+      "password": "$2a$10$ieCLVVY8JatS0XIkqTXI9utjIqcboRKc.JAl75nm0fX0Tm89NLkPy",
       "username": "lionel",
       "id": 1
-    },
-    {
-      "email": "komguemlionel@hotmail.fr",
-      "password": "$2a$10$SPr77rrNVCdejih5r9rxs.Jr5JjGgrRO8Q3fr6YHe/u52I0pVv/F6",
-      "username": "jojo",
-      "id": 2
-    },
-    {
-      "email": "admin@almaheritage.com",
-      "password": "$2a$10$QTDenNEh7thv/ULZDr78kO.x9ccu1aVyWI/OzNYfeSN8JMPc.aNVG",
-      "username": "jolyne",
-      "id": 3
-    },
-    {
-      "email": "lionel@gmail.com",
-      "password": "$2a$10$5VN0fTL1FtEwfjIACfp.JOm8Pii/UlVa2b/R6lZ58ayMpB0QAoCSu",
-      "username": "user",
-      "id": 4
     }
   ]
 }

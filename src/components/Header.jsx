@@ -11,6 +11,7 @@ import { useRouter } from 'next/router';
 import NotificationIcon from "@material-ui/icons/Notifications"
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search"
+import LogoutIcon from '@material-ui/icons/ExitToApp';
 
 const Header = (props) => {
     const { page } = props;
@@ -53,7 +54,6 @@ const Header = (props) => {
                     + "?"
                     + searchParams.toString();
 
-                //console.log(window.location.pathname, window.location.host)
                 window.history.replaceState({
                     path: url
                 }, "", url)
@@ -131,9 +131,9 @@ const Header = (props) => {
                             <li className='nav_item'>
                                 {router.asPath === "/login" ?
                                     (<Link href={"/register"}>
-                                        <Button text={"S'inscrire"} classes="btn btn_color_red" />
+                                        <Button text={"S'inscrire"} onclick={()=>{router.push("/register")}} classes="btn btn_color_red" />
                                     </Link>) : (<Link href={"/login"}>
-                                        <Button text={"Connexion"} classes="btn btn_color_red" />
+                                        <Button text={"Connexion"} onclick={()=>{router.push("/login")}} classes="btn btn_color_red" />
                                     </Link>)}
                             </li>
                         </ul>
@@ -159,7 +159,7 @@ const Header = (props) => {
                             </Link></li>
                         </ul>
                         <ul className="nav_actions ">
-                            <li className="nav_action"><Input classes={`${isActive && "active"}`} onKeyUp={(e) => handleChange(e.target.value)} onChange={(e) => { searchMovie(e.target.value) }} /><Link href={"/filter"}>
+                            <li className="nav_action">{/*<Input classes={`${isActive && "active"}`} onKeyUp={(e) => handleChange(e.target.value)} onChange={(e) => { searchMovie(e.target.value) }} />*/}<Link href={"/filter"}>
 
                                 <div ><SearchIcon onClick={showSearch} /></div>
                             </Link></li>
@@ -177,6 +177,12 @@ const Header = (props) => {
                                     alt=""
                                     width={30}
                                     height={30} />
+                            </Link></li>
+                            <li className="nav_action"><Link href={"/login"} className="nav_action">
+                            <LogoutIcon onClick={() => {
+                                    localStorage.removeItem("Token")
+                                    localStorage.removeItem("user")
+                                }} />
                             </Link></li>
                         </ul>
                     </div>)

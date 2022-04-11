@@ -1,5 +1,6 @@
 import { React, useState } from 'react';
 import { useRouter } from 'next/router';
+import axios from 'axios';
 
 
 const Index = () => {
@@ -9,19 +10,21 @@ const Index = () => {
         username: ''
     })
     const router = useRouter();
-    function handleSubmit(e) {
-        e.preventDefault()
-        fetch('http://localhost:3003/users', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData)
+    const handleSubmit = (e) => {
+        axios.post('http://localhost:3003/users', {
+            email: formData.email,
+            password: formData.password,
+            username: formData.username,
         })
-            .then(res => res.json())
-            .then(data => {
-                localStorage.setItem("Token", data.accessToken);
-                localStorage.setItem("user", JSON.stringify(data.user))
-                router.push("/profil");
-            })
+        .then(response => {
+            localStorage.setItem("Token", response.data.accessToken);
+            localStorage.setItem("user", JSON.stringify(response.data.user))
+            router.push("/profil");
+        }).catch((error) => {
+           
+            notifyAdd(error.response.data)
+        })
+        e.preventDefault()
     }
 
     function handleChange(e) {
@@ -37,7 +40,6 @@ const Index = () => {
                 <input className={"input_form"} type='password' placeholder='Password' value={formData.password} name='password' onChange={e => handleChange(e)} ></input>
                 <button className='btn_color_red btn_form' type='submit'>Sign Up</button>
             </form>
-
         </div>
     );
 }
