@@ -14,23 +14,13 @@ import { RemoveCircle } from '@material-ui/icons';
 
 const Cardmovies = (props) => {
     const { movie } = props;
-    const [updateWish, setUpdateWish] = useState(false)
     const [isHover, setIsHover] = useState(false)
     const [showModal, SetShowModal] = useState(false);
-    const [watchlist, setWatchlist] = useState(typeof window !== "undefined" ? JSON.parse(localStorage.getItem("wishList")) : []);
-    const notifyDelete = () => toast.success(`${movie?.title || movie?.name || movie?.original_title} a bien été retiré de ta watchlist !`);
+    const [wishList, setWishList] = useState(typeof window !== "undefined" ? JSON.parse(localStorage.getItem("wishList")) : []);
+    const notifyDelete = () => toast.success(`${movie?.title || movie?.name || movie?.original_title} a bien été retiré de ta wishlist !` ,{ position: toast.POSITION.TOP_CENTER });
 
-    const notifyAdd = () => toast.success(`${movie.original_title} a bien été ajouté dans ta watchlist !`, { position: toast.POSITION.TOP_CENTER });
-    const API_KEY = "7f73b4bd455e5ace6fdc9f0d04e45857";
-    const MOVIE_API = "https://api.themoviedb.org/3/"
-    const [trailer, setTrailer] = useState(null);
-    const [playing, setPlaying] = useState(false);
-    const bannerStyle = {
-        backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
-        backgroundSize: "cover",
-        backgroundPosition: "center center",
-    }
-
+    const notifyAdd = () => toast.success(`${movie.original_title} a bien été ajouté dans ta wishList !`, { position: toast.POSITION.TOP_CENTER });
+ 
     const handleClickModal = () => {
         showModal ? SetShowModal(false) : SetShowModal(true);
     }
@@ -136,7 +126,7 @@ const Cardmovies = (props) => {
           newListArray.push(newMovie);
           localStorage.setItem("wishList", JSON.stringify(newListArray));
         }
-        setWatchlist(newListArray)
+        setWishList(newListArray)
         localStorage.setItem("isUpdate",true);
     
     
@@ -154,10 +144,9 @@ const Cardmovies = (props) => {
     }*/
     const removeToWishList = (movie) => {
         notifyDelete();
-        const newList = watchlist.filter((item) => item.id !== movie.id);
+        const newList = wishList.filter((item) => item.id !== movie.id);
         localStorage.setItem("wishList", JSON.stringify(newList));
-        setWatchlist(newList);
-        setUpdateWish(true);
+        setWishList(newList);
         localStorage.setItem("isUpdate",true);
       };
 
