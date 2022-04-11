@@ -15,5 +15,3 @@ route list
 5 - "/filter"
 6 - "/profil"
 7 - "/wishlist"
-
-
